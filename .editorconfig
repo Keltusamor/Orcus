@@ -1,0 +1,14 @@
+root = true
+
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.cs]
+charset = utf-8
+indent_style = space
+indent_size = 4
+tab_width = unset
+csharp_new_line_before_open_brace = all
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
