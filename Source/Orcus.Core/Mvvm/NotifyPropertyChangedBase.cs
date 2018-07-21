@@ -11,7 +11,7 @@ namespace Orcus.Core.Mvvm
     /// </summary>
     /// <example>
     /// <code>
-    /// public class Example : BaseNotifyPropertyChanged
+    /// public class Example : NotifyPropertyChangedBase
     /// {
     ///     private int number;
     ///     public int Number
@@ -37,7 +37,7 @@ namespace Orcus.Core.Mvvm
     /// }
     /// </code>
     /// </example>
-    public abstract class BaseNotifyPropertyChanged : INotifyPropertyChanged
+    public abstract class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         /// <summary>
         /// Invoked if <see cref="SetField{T}(ref T, T, string)"/> or <see cref="OnPropertyChanged(PropertyChangedEventArgs)"/> is called.

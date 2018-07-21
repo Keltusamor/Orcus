@@ -1,11 +1,8 @@
 using Orcus.Core.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Orcus.Core.Tests.Mocks.ViewModels
 {
-    public class MockViewModel : BaseNotifyPropertyChanged
+    public class MockViewModel : NotifyPropertyChangedBase
     {
         public bool IsNewValueSet { get; set; }
 

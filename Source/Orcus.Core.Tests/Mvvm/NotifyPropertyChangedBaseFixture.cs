@@ -4,7 +4,7 @@ using Orcus.Core.Tests.Mocks.ViewModels;
 namespace Orcus.Core.Tests.Mvvm
 {
     [TestFixture]
-    public class BaseNotifyPropertyChangedFixture
+    public class NotifyPropertyChangedBaseFixture
     {
         private MockViewModel ViewModel { get; set; }
 
