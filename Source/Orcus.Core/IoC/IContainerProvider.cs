@@ -4,7 +4,7 @@ namespace Orcus.Core.IoC
 {
     public interface IContainerProvider
     {
-        void Resolve(Type type);
-        void Resolve(Type type, string name);
+        object Resolve(Type type);
+        object Resolve(Type type, string name);
     }
 }
