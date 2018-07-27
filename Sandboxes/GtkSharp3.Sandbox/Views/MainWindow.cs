@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Gtk;
 
-namespace GtkSharp3.Sandbox
+namespace GtkSharp3.Sandbox.Views
 {
     public class MainWindow : Window
     {

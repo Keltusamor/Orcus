@@ -1,6 +1,9 @@
 using System;
 using Gtk;
-using Orcus.GtkSharp3;
+using GtkSharp3.Sandbox.Services;
+using GtkSharp3.Sandbox.Views;
+using Orcus.Core.IoC;
+using Orcus.GtkSharp3.Unity;
 
 namespace GtkSharp3.Sandbox
 {
@@ -13,11 +16,18 @@ namespace GtkSharp3.Sandbox
         }
     }
 
-    class GtkSharp3SandboxApplication : OrcusApplicationBase
+    class GtkSharp3SandboxApplication : OrcusApplication
     {
         protected override Window CreateMainWindow()
         {
             return new MainWindow("GtkSharp3.Sandbox");
+        }
+
+        protected override void RegisterDependencies(IContainerRegistry containerRegistry)
+        {
+            base.RegisterDependencies(containerRegistry);
+
+            containerRegistry.RegisterSingleton<ITestService, TestService>();
         }
     }
 }
