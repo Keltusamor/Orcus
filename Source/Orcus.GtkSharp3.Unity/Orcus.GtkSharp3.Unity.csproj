@@ -1,18 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <ApplicationIcon />
-    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GtkSharp" Version="3.22.24.*" />
+    <PackageReference Include="Unity" Version="5.8.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Orcus.Core\Orcus.Core.csproj" />
+    <ProjectReference Include="..\Orcus.GtkSharp3\Orcus.GtkSharp3.csproj" />
   </ItemGroup>
 
 </Project>
