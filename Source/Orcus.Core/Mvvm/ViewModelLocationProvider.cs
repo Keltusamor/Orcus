@@ -8,7 +8,7 @@ namespace Orcus.Core.Mvvm
         public static Type LocateViewModelType(object view)
         {
             Debugger.Break();
-            throw new NotSupportedException("ViewModelType location is not needed for GtkSharp.");
+            throw new NotImplementedException();
         }
     }
 }

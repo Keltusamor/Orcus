@@ -27,11 +27,14 @@ namespace Orcus.Core.Mvvm
 
         public static void RegisterConventionBasedViewModelFactory(Func<object, Type, object> viewModelFactory)
         {
-            ConventionBasedViewModelFactory = viewModelFactory;
+            ConventionBasedViewModelFactory = viewModelFactory ?? throw new ArgumentNullException(nameof(viewModelFactory));
         }
 
         public static object Create(object view, Type viewModelType = null)
         {
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
+
             object viewModel = null;
 
             if (TryCreateViewModelWithCustomFactory(view, out viewModel))
