@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 
 namespace Orcus.Core.Mvvm
 {
@@ -8,7 +7,8 @@ namespace Orcus.Core.Mvvm
     {
         public static Type LocateViewModelType(object view)
         {
-            throw new NotImplementedException();
+            Debugger.Break();
+            throw new NotSupportedException("ViewModelType location is not needed for GtkSharp.");
         }
     }
 }
