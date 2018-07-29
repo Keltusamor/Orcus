@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Gtk;
 using Orcus.Core.IoC;
+using Orcus.Core.Mvvm;
 
 namespace Orcus.GtkSharp3
 {
@@ -21,20 +20,22 @@ namespace Orcus.GtkSharp3
 
         protected virtual void BeforeInitialize()
         {
+            ViewModelFactory.RegisterConventionBasedViewModelFactory((view, viewModelType) => ContainerAdapter.Resolve(viewModelType));
+
             Application.Init();
-            Application = new Application("org.Orcus.GtkSharp3", GLib.ApplicationFlags.None);
-            Application.Register(GLib.Cancellable.Current);
         }
 
         protected virtual void Initialize()
         {
-            ContainerAdapter = CreateContainerAdapter();
+            ContainerAdapter = CreateContainerAdapter() ?? throw new NullReferenceException("You have to provide an IContainerAdapter.");
+
             RegisterDependencies(ContainerAdapter);
             ContainerAdapter.FinishRegistration();
 
+            ResolveDependencies(ContainerAdapter);
+
             MainWindow = CreateMainWindow() ?? throw new NullReferenceException("Window was not initialized. Make sure to not return null in CreateMainWindow().");
             MainWindow.DeleteEvent += OnMainWindowDeleted;
-            Application.AddWindow(MainWindow);
         }
 
         protected abstract IContainerAdapter CreateContainerAdapter();
@@ -44,6 +45,10 @@ namespace Orcus.GtkSharp3
             containerRegistry.RegisterInstance(typeof(IContainerAdapter), ContainerAdapter);
             containerRegistry.RegisterInstance(typeof(IContainerRegistry), ContainerAdapter);
             containerRegistry.RegisterInstance(typeof(IContainerProvider), ContainerAdapter);
+        }
+
+        protected virtual void ResolveDependencies(IContainerProvider containerProvider)
+        {
         }
 
         protected abstract Window CreateMainWindow();

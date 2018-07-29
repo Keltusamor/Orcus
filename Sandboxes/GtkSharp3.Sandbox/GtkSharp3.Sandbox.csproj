@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Source\Orcus.Core\Orcus.Core.csproj" />
+    <ProjectReference Include="..\..\Source\Orcus.GtkSharp3.Unity\Orcus.GtkSharp3.Unity.csproj" />
     <ProjectReference Include="..\..\Source\Orcus.GtkSharp3\Orcus.GtkSharp3.csproj" />
   </ItemGroup>
 
