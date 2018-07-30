@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using Orcus.Core.Events;
 using Orcus.Core.IoC;
 using Orcus.Core.Mvvm;
 
@@ -42,9 +43,10 @@ namespace Orcus.GtkSharp3
 
         protected virtual void RegisterDependencies(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance(typeof(IContainerAdapter), ContainerAdapter);
-            containerRegistry.RegisterInstance(typeof(IContainerRegistry), ContainerAdapter);
-            containerRegistry.RegisterInstance(typeof(IContainerProvider), ContainerAdapter);
+            containerRegistry.RegisterInstance(ContainerAdapter);
+            containerRegistry.RegisterInstance<IContainerRegistry>(ContainerAdapter);
+            containerRegistry.RegisterInstance<IContainerProvider>(ContainerAdapter);
+            containerRegistry.RegisterSingleton<IEventAggregator, EventAggregator>();
         }
 
         protected virtual void ResolveDependencies(IContainerProvider containerProvider)
