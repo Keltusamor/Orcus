@@ -10,12 +10,7 @@ namespace Orcus.Core.Events
     {
         public SynchronizationContext SynchronizationContext { get; set; }
 
-        protected List<IEventSubscription> Subscriptions { get; private set; }
-
-        public EventBase()
-        {
-            Subscriptions = new List<IEventSubscription>();
-        }
+        protected List<IEventSubscription> Subscriptions { get; } = new List<IEventSubscription>();
 
         protected SubscriptionToken InternalSubscribe(IEventSubscription eventSubscription)
         {
@@ -25,7 +20,9 @@ namespace Orcus.Core.Events
             eventSubscription.SubscriptionToken = new SubscriptionToken(UnSubscribe);
 
             lock (Subscriptions)
+            {
                 Subscriptions.Add(eventSubscription);
+            }
 
             return eventSubscription.SubscriptionToken;
         }
@@ -58,9 +55,13 @@ namespace Orcus.Core.Events
                 {
                     var callback = subscription.GetSubscriptionCallback();
                     if (callback == null)
+                    {
                         Subscriptions.Remove(subscription);
+                    }
                     else
+                    {
                         nonGarbageCollectedSubscriptionCallbacks.Add(callback);
+                    }
                 }
             }
 

@@ -19,10 +19,7 @@ namespace Orcus.Core.Events
 
                 return GetDelegate();
             }
-            set
-            {
-                target = value;
-            }
+            set { target = value; }
         }
 
         public ManagedDelegateReference(Delegate @delegate, bool keepReferenceAlive)
