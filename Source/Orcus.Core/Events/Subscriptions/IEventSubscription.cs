@@ -2,7 +2,7 @@ using System;
 
 namespace Orcus.Core.Events.Subscriptions
 {
-    public interface IEventSubscription
+    interface IEventSubscription
     {
         SubscriptionToken SubscriptionToken { get; set; }
 
