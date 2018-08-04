@@ -10,9 +10,9 @@ namespace Orcus.Core.Events
     {
         public SynchronizationContext SynchronizationContext { get; set; }
 
-        protected List<IEventSubscription> Subscriptions { get; } = new List<IEventSubscription>();
+        internal List<IEventSubscription> Subscriptions { get; } = new List<IEventSubscription>();
 
-        protected SubscriptionToken InternalSubscribe(IEventSubscription eventSubscription)
+        internal SubscriptionToken InternalSubscribe(IEventSubscription eventSubscription)
         {
             if (eventSubscription == null)
                 throw new ArgumentNullException(nameof(eventSubscription));
