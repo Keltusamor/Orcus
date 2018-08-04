@@ -6,7 +6,12 @@ namespace Orcus.Core.Events
 {
     public class PubSubEvent<TPayload> : EventBase
     {
-        public SubscriptionToken Subscribe(Action<TPayload> action, ThreadOption threadOption = ThreadOption.PublisherThread, bool keepSubscriberReferenceAlive = false, Predicate<TPayload> filter = null)
+        public SubscriptionToken Subscribe(
+            Action<TPayload> action
+            , ThreadOption threadOption = ThreadOption.PublisherThread
+            , bool keepSubscriberReferenceAlive = false
+            , Predicate<TPayload> filter = null
+        )
         {
             var actionReference = new ManagedDelegateReference(action, keepSubscriberReferenceAlive);
             var filterReference = filter != null

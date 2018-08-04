@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Orcus.Core.Events.Subscriptions;
 
@@ -6,7 +7,11 @@ namespace Orcus.Core.Events
 {
     public class PubSubEvent : EventBase
     {
-        public SubscriptionToken Subscribe(Action action, ThreadOption threadOption = ThreadOption.PublisherThread, bool keepSubscriberReferenceAlive = false)
+        public SubscriptionToken Subscribe(
+            Action action
+            , ThreadOption threadOption = ThreadOption.PublisherThread
+            , bool keepSubscriberReferenceAlive = false
+        )
         {
             var actionReference = new ManagedDelegateReference(action, keepSubscriberReferenceAlive);
 
