@@ -40,9 +40,7 @@ namespace Orcus.Core.Events
         protected void InternalPublish(object argument)
         {
             foreach (var callback in PruneAndReturnSubscriptionCallbacks())
-            {
                 callback(argument);
-            }
         }
 
         private List<Action<object>> PruneAndReturnSubscriptionCallbacks()
@@ -66,6 +64,15 @@ namespace Orcus.Core.Events
             }
 
             return nonGarbageCollectedSubscriptionCallbacks;
+        }
+
+        public bool Contains(SubscriptionToken subscriptionToken)
+        {
+            lock (Subscriptions)
+            {
+                var eventSubscription = Subscriptions.FirstOrDefault(subscription => subscription.SubscriptionToken == subscriptionToken);
+                return eventSubscription != null;
+            }
         }
     }
 }
