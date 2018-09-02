@@ -17,7 +17,7 @@ namespace Orcus.Core.Events
                 if (target != null)
                     return target;
 
-                return GetDelegate();
+                return CreateDelegateViaReflection();
             }
             set { target = value; }
         }
@@ -39,7 +39,7 @@ namespace Orcus.Core.Events
             }
         }
 
-        private Delegate GetDelegate()
+        private Delegate CreateDelegateViaReflection()
         {
             if (MethodInfo.IsStatic)
                 return MethodInfo.CreateDelegate(DelegateType, null);
