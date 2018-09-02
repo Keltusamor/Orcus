@@ -5,7 +5,7 @@ namespace Orcus.Core.Tests.Mocks.Events
 {
     public class TestableMockEventBase : EventBase
     {
-        internal SubscriptionToken Subscribe(IEventSubscription eventSubscription)
+        internal SubscriptionToken Subscribe(EventSubscription eventSubscription)
         {
             return InternalSubscribe(eventSubscription);
         }

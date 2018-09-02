@@ -18,11 +18,11 @@ namespace Orcus.Core.Events
                 ? new ManagedDelegateReference(filter, keepSubscriberReferenceAlive)
                 : new ManagedDelegateReference(new Predicate<TPayload>((param) => true), true);
 
-            IEventSubscription eventSubscription;
+            EventSubscription eventSubscription;
             switch (threadOption)
             {
                 case ThreadOption.PublisherThread:
-                    eventSubscription = new EventSubscription<TPayload>(actionReference, filterReference);
+                    eventSubscription = new PublisherEventSubscription<TPayload>(actionReference, filterReference);
                     break;
                 case ThreadOption.BackgroundThread:
                     eventSubscription = new BackgroundEventSubscription<TPayload>(actionReference, filterReference);

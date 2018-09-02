@@ -4,7 +4,7 @@ namespace Orcus.GtkSharp3.Unity
 {
     public abstract class OrcusApplication : OrcusApplicationBase
     {
-        protected sealed override IContainerAdapter CreateContainerAdapter()
+        protected sealed override ContainerAdapter CreateContainerAdapter()
         {
             return new UnityContainerAdapter();
         }

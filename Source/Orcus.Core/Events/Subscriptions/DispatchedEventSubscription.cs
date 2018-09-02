@@ -3,11 +3,11 @@ using System.Threading;
 
 namespace Orcus.Core.Events.Subscriptions
 {
-    class DispatchedEventSubscription : EventSubscription
+    class DispatchedEventSubscription : PublisherEventSubscription
     {
         private SynchronizationContext SynchronizationContext { get; }
 
-        public DispatchedEventSubscription(IDelegateReference actionReference, SynchronizationContext synchronizationContext)
+        public DispatchedEventSubscription(DelegateReference actionReference, SynchronizationContext synchronizationContext)
             : base(actionReference)
         {
             SynchronizationContext = synchronizationContext;

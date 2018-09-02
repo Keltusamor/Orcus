@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace Orcus.Core.Events.Subscriptions
 {
-    class BackgroundEventSubscription<TPayload> : EventSubscription<TPayload>
+    class BackgroundEventSubscription<TPayload> : PublisherEventSubscription<TPayload>
     {
-        public BackgroundEventSubscription(IDelegateReference actionReference, IDelegateReference filterReference)
+        public BackgroundEventSubscription(DelegateReference actionReference, DelegateReference filterReference)
             : base(actionReference, filterReference)
         {
         }

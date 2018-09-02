@@ -14,11 +14,11 @@ namespace Orcus.Core.Events
         {
             var actionReference = new ManagedDelegateReference(action, keepSubscriberReferenceAlive);
 
-            IEventSubscription eventSubscription;
+            EventSubscription eventSubscription;
             switch (threadOption)
             {
                 case ThreadOption.PublisherThread:
-                    eventSubscription = new EventSubscription(actionReference);
+                    eventSubscription = new PublisherEventSubscription(actionReference);
                     break;
                 case ThreadOption.BackgroundThread:
                     eventSubscription = new BackgroundEventSubscription(actionReference);

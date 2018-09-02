@@ -1,6 +1,6 @@
 namespace Orcus.Core.IoC
 {
-    public interface IContainerAdapter<TContainer> : IContainerAdapter
+    public interface ContainerAdapter<TContainer> : ContainerAdapter
     {
         TContainer Instance { get; }
     }

@@ -2,11 +2,11 @@ using System;
 
 namespace Orcus.Core.Events.Subscriptions
 {
-    class EventSubscription<TPayload> : IEventSubscription
+    class PublisherEventSubscription<TPayload> : EventSubscription
     {
-        private IDelegateReference ActionReference { get; }
+        private DelegateReference ActionReference { get; }
 
-        private IDelegateReference FilterReference { get; }
+        private DelegateReference FilterReference { get; }
 
         public Action<TPayload> Action { get { return (Action<TPayload>)ActionReference.Target; } }
 
@@ -14,7 +14,7 @@ namespace Orcus.Core.Events.Subscriptions
 
         public SubscriptionToken SubscriptionToken { get; set; }
 
-        public EventSubscription(IDelegateReference actionReference, IDelegateReference filterReference)
+        public PublisherEventSubscription(DelegateReference actionReference, DelegateReference filterReference)
         {
             ActionReference = actionReference ?? throw new ArgumentNullException(nameof(actionReference));
             FilterReference = filterReference ?? throw new ArgumentNullException(nameof(filterReference));

@@ -4,7 +4,7 @@ using Unity;
 
 namespace Orcus.GtkSharp3.Unity
 {
-    public class UnityContainerAdapter : IContainerAdapter<IUnityContainer>
+    public class UnityContainerAdapter : ContainerAdapter<IUnityContainer>
     {
         public IUnityContainer Instance { get; }
 

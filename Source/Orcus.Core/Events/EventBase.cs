@@ -10,9 +10,9 @@ namespace Orcus.Core.Events
     {
         public SynchronizationContext SynchronizationContext { get; set; }
 
-        internal List<IEventSubscription> Subscriptions { get; } = new List<IEventSubscription>();
+        internal List<EventSubscription> Subscriptions { get; } = new List<EventSubscription>();
 
-        internal SubscriptionToken InternalSubscribe(IEventSubscription eventSubscription)
+        internal SubscriptionToken InternalSubscribe(EventSubscription eventSubscription)
         {
             if (eventSubscription == null)
                 throw new ArgumentNullException(nameof(eventSubscription));
@@ -49,7 +49,7 @@ namespace Orcus.Core.Events
 
             lock (Subscriptions)
             {
-                foreach (var subscription in Subscriptions.Reverse<IEventSubscription>())
+                foreach (var subscription in Subscriptions.Reverse<EventSubscription>())
                 {
                     var callback = subscription.GetSubscriptionCallback();
                     if (callback == null)

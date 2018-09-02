@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Orcus.Core.Events
 {
-    class ManagedDelegateReference : IDelegateReference
+    class ManagedDelegateReference : DelegateReference
     {
         private WeakReference WeakReference { get; }
         private MethodInfo MethodInfo { get; }

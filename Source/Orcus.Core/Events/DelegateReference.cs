@@ -2,7 +2,7 @@ using System;
 
 namespace Orcus.Core.Events
 {
-    interface IDelegateReference
+    internal interface DelegateReference
     {
         Delegate Target { get; }
     }

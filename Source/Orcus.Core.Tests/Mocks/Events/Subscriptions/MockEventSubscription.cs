@@ -3,7 +3,7 @@ using Orcus.Core.Events.Subscriptions;
 
 namespace Orcus.Core.Tests.Mocks.Events.Subscriptions
 {
-    internal class MockEventSubscription : IEventSubscription
+    internal class MockEventSubscription : EventSubscription
     {
         private Action<object> Action { get; }
 

@@ -2,7 +2,7 @@ using System;
 
 namespace Orcus.Core.IoC
 {
-    public interface IContainerRegistry
+    public interface ContainerRegistry
     {
         void Register(Type from, Type to);
         void Register(Type from, Type to, string name);

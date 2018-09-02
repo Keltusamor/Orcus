@@ -10,7 +10,7 @@ namespace Orcus.Core.Tests.Events
         [TestCase]
         public void GetReturnsSingletonForEvents()
         {
-            var eventAggregator = new EventAggregator();
+            var eventAggregator = new EventAggregatorImpl();
 
             var event1 = eventAggregator.GetEvent<SimpleMockEventBase>();
             var event2 = eventAggregator.GetEvent<SimpleMockEventBase>();

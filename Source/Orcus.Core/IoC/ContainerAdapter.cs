@@ -1,6 +1,6 @@
 namespace Orcus.Core.IoC
 {
-    public interface IContainerAdapter : IContainerRegistry, IContainerProvider
+    public interface ContainerAdapter : ContainerRegistry, ContainerProvider
     {
         /// <summary>
         /// <remarks>Only containers that are mutale can support modules.</remarks>
