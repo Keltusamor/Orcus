@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using Orcus.Core;
 using Orcus.Core.Events;
 using Orcus.Core.IoC;
 using Orcus.Core.Mvvm;
@@ -46,6 +47,7 @@ namespace Orcus.GtkSharp3
             containerRegistry.RegisterInstance(ContainerAdapter);
             containerRegistry.RegisterInstance<ContainerRegistry>(ContainerAdapter);
             containerRegistry.RegisterInstance<ContainerProvider>(ContainerAdapter);
+            containerRegistry.RegisterSingleton<UiThreadDispatcher, UiThreadDispatcherImpl>();
             containerRegistry.RegisterSingleton<EventAggregator, EventAggregatorImpl>();
         }
 
