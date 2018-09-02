@@ -12,13 +12,13 @@ namespace GtkSharp3.Sandbox.ViewModels
 {
     public class MainWindowViewModel
     {
-        private IEventAggregator EventAggregator { get; }
+        private EventAggregator EventAggregator { get; }
 
         private ITestService TestService { get; }
 
         public string TestButtonText => "TestButton";
 
-        public MainWindowViewModel(IEventAggregator eventAggregator, ITestService testService)
+        public MainWindowViewModel(EventAggregator eventAggregator, ITestService testService)
         {
             TestService = testService;
             EventAggregator = eventAggregator;

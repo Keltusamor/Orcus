@@ -9,7 +9,7 @@ using Orcus.GtkSharp3.Unity;
 
 namespace GtkSharp3.Sandbox
 {
-    class Program
+    internal class Program
     {
         [STAThread]
         public static void Main(string[] args)
@@ -18,7 +18,7 @@ namespace GtkSharp3.Sandbox
         }
     }
 
-    class GtkSharp3SandboxApplication : OrcusApplication
+    internal class GtkSharp3SandboxApplication : OrcusApplication
     {
         protected override void BeforeInitialize()
         {
@@ -30,14 +30,14 @@ namespace GtkSharp3.Sandbox
             return new MainWindow("GtkSharp3.Sandbox");
         }
 
-        protected override void RegisterDependencies(IContainerRegistry containerRegistry)
+        protected override void RegisterDependencies(ContainerRegistry containerRegistry)
         {
             base.RegisterDependencies(containerRegistry);
 
             containerRegistry.RegisterSingleton<ITestService, TestService>();
         }
 
-        protected override void ResolveDependencies(IContainerProvider containerProvider)
+        protected override void ResolveDependencies(ContainerProvider containerProvider)
         {
             base.ResolveDependencies(containerProvider);
 
