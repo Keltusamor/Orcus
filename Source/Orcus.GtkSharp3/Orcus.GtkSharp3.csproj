@@ -5,10 +5,18 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
+    <Version>0.0.1</Version>
+    <Authors>Keltusamor</Authors>
+    <Product>Orcus</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Copyright>MIT</Copyright>
+    <RepositoryUrl>https://github.com/Keltusamor/Orcus</RepositoryUrl>
+    <Company />
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GtkSharp" Version="3.22.24.*" />
+    <PackageReference Include="GtkSharp" Version="3.22.24.36" />
   </ItemGroup>
 
   <ItemGroup>

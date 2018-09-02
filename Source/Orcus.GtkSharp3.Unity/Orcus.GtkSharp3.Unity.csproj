@@ -2,10 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Authors>Keltusamor</Authors>
+    <Version>0.0.1</Version>
+    <Product>Orcus</Product>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Keltusamor/Orcus</RepositoryUrl>
+    <Company />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Unity" Version="5.8.6" />
+    <PackageReference Include="Unity" Version="5.8.11" />
   </ItemGroup>
 
   <ItemGroup>
