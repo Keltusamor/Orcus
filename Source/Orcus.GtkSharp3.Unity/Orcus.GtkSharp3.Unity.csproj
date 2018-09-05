@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Authors>Keltusamor</Authors>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Product>Orcus</Product>
     <Copyright>MIT</Copyright>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
