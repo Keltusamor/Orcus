@@ -2,12 +2,11 @@ using Gtk;
 
 namespace Orcus.GtkSharp3.Mvvm
 {
-    public abstract class WindowBase<T> : Window
+    public abstract class HBoxBase<T> : HBox
     {
         public T ViewModel { get; set; }
 
-        protected WindowBase(string title)
-            : base(title)
+        protected HBoxBase()
         {
         }
 

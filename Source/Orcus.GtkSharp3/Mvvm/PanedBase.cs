@@ -2,12 +2,12 @@ using Gtk;
 
 namespace Orcus.GtkSharp3.Mvvm
 {
-    public abstract class WindowBase<T> : Window
+    public abstract class PanedBase<T> : Paned
     {
         public T ViewModel { get; set; }
 
-        protected WindowBase(string title)
-            : base(title)
+        protected PanedBase(Orientation orientation)
+            : base(orientation)
         {
         }
 

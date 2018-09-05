@@ -8,18 +8,21 @@ namespace GtkSharp3.Sandbox.Views
     {
         private Button TestButton { get; set; }
 
-        public MainWindow(string title) : base(title)
+        public MainWindow(string title)
+            : base(title)
         {
         }
 
         protected override void SetupView()
         {
-            var parent = new VBox();
-            Add(parent);
+            var pane = new VBox();
+            Add(pane);
 
             TestButton = new Button();
-            parent.Add(TestButton);
+            pane.Add(TestButton);
             TestButton.Label = ViewModel.TestButtonText;
+
+            pane.Add(new SomeWidget());
         }
 
         protected override void RegisterCallbacks()
