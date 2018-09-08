@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Orcus.Core.Events;
 
@@ -10,40 +11,62 @@ namespace Orcus.Core.Tests.Events
     public class ManagedDelegateReferenceFixture
     {
         [TestCase]
-        public void AllowsDelegatesToBeGarbageCollected()
+        public async Task When_KeepReferenceAlive_False_Then_DelegateShouldGetGarbageCollected()
         {
-            WeakReference test = null;
-            ManagedDelegateReference delegateReference = null;
+            var someClassHandler = new SomeClassHandler();
+            var delegateReference = new ManagedDelegateReference((Action<string>)someClassHandler.Do, false);
 
-            {
-                //var @delegate = new SomeClassHandler();
-                //test = new WeakReference(@delegate);
-                //delegateReference = new ManagedDelegateReference((Action<string>)((SomeClassHandler)@delegate).Do, false);
-                //@delegate = null;
-
-                test = new WeakReference(new SomeClassHandler());
-                delegateReference = new ManagedDelegateReference((Action<string>)((SomeClassHandler)test.Target).Do, false);
-                test.Target = null;
-            }
-
+            someClassHandler = null;
+            // Delay is important here. If we do GC.Collect() immediately the delegate is not listed for garbage collection yet.
+            await Task.Delay(100);
             GC.Collect();
 
-            Assert.Null(test.Target);
+            Assert.IsNull(delegateReference.Target);
         }
 
         [TestCase]
-        public void KeepSubscriberReferenceAlivePreventsGarbageCollectionOfDelegate()
+        public void When_KeepReferenceAlive_False_Then_StaticDelegatesShouldGetInvoked()
         {
+            var delegateReference = new ManagedDelegateReference((Action<string>)SomeClassHandler.StaticDo, false);
+            Assert.IsNotNull(delegateReference.Target);
+        }
 
+        [TestCase]
+        public async Task When_KeepReferenceAlive_True_Then_DelegateShouldNotGetGarbageCollected()
+        {
+            var someClassHandler = new SomeClassHandler();
+            var delegateReference = new ManagedDelegateReference((Action<string>)someClassHandler.Do, true);
+
+            someClassHandler = null;
+            // Delay is important here. If we do GC.Collect() immediately the delegate is not listed for garbage collection yet.
+            await Task.Delay(100);
+            GC.Collect();
+
+            Assert.IsNotNull(delegateReference.Target);
+        }
+
+        [TestCase]
+        public void TargetShouldReturnAction()
+        {
+            var someClassHandler = new SomeClassHandler();
+            var delegateReference = new ManagedDelegateReference((Action<string>)someClassHandler.Do, false);
+
+            ((Action<string>)delegateReference.Target)("Payload");
+
+            Assert.AreEqual("Payload", someClassHandler.Arg);
         }
 
         public class SomeClassHandler
         {
             public string Arg { get; set; }
 
+            public static void StaticDo(string value)
+            {
+            }
+
             public void Do(string value)
             {
-
+                Arg = value;
             }
         }
     }
