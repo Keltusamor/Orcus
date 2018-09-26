@@ -4,6 +4,7 @@ using Orcus.Core;
 using Orcus.Core.Events;
 using Orcus.Core.IoC;
 using Orcus.Core.Mvvm;
+using Orcus.GtkSharp3.Events;
 
 namespace Orcus.GtkSharp3
 {
@@ -64,6 +65,8 @@ namespace Orcus.GtkSharp3
 
         protected virtual void AfterInitialize()
         {
+            var eventAggregator = ContainerAdapter.Resolve<EventAggregator>();
+            eventAggregator.GetEvent<OrcusInitializedEvent>().Publish();
             MainWindow.Show();
             Application.Run();
         }
