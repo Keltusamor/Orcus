@@ -3,20 +3,10 @@ using System.Windows.Forms;
 
 namespace Orcus.WinForms.Mvvm
 {
-    public abstract class FormBase<T> : Form
+    // Can't be abstract if it should be used with WinForms designer.
+    public class FormBase<T> : Form
     {
         public T ViewModel { get; set; }
-
-        protected FormBase()
-            : base()
-        {
-        }
-
-        protected FormBase(string title)
-            : base()
-        {
-            Text = title;
-        }
 
         protected override void OnShown(EventArgs e)
         {
@@ -28,9 +18,9 @@ namespace Orcus.WinForms.Mvvm
             RegisterCallbacks();
         }
 
-        protected abstract void SetupView();
+        protected virtual void SetupView() { }
 
-        protected abstract void RegisterCallbacks();
+        protected virtual void RegisterCallbacks() { }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
@@ -39,6 +29,6 @@ namespace Orcus.WinForms.Mvvm
             base.OnFormClosed(e);
         }
 
-        protected abstract void UnRegisterCallbacks();
+        protected virtual void UnRegisterCallbacks() { }
     }
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Orcus.Core.Mvvm;
 
 namespace Orcus.WinForms.Mvvm
@@ -6,8 +7,11 @@ namespace Orcus.WinForms.Mvvm
     {
         public static void AutoWireViewModel<T>(FormBase<T> view)
         {
-            var viewModel = ViewModelFactory.Create(view, typeof(T));
-            BindViewModel<T>(view, viewModel);
+            if (!(System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv"))
+            {
+                var viewModel = ViewModelFactory.Create(view, typeof(T));
+                BindViewModel<T>(view, viewModel);
+            }
         }
 
         private static void BindViewModel<T>(object view, object viewModel)
